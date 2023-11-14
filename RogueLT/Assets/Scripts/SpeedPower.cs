@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class SpeedPower : MonoBehaviour
 {
-    public PlayerMov myplayer;
+    
+    //public PlayerStats playerStats;
 
     //[SerializeField] private GameObject _artTooDisable = null;
 
@@ -18,6 +19,7 @@ public class SpeedPower : MonoBehaviour
     void Start()
     {
         Debug.Log("speed up");
+        
     }
 
     // Update is called once per frame
@@ -41,14 +43,16 @@ public class SpeedPower : MonoBehaviour
     }
     public IEnumerator PowerupSequence(PlayerMov playerMov)
     {
-        PlayerStats stats = new PlayerStats();
-        stats.MovementSpeed = 10f;
+        
+
+        //playerStats.MovementSpeed = 10f;
         
         m_collider.enabled = false;
         Debug.Log("touch");
         //_artTooDisable.SetActive(false);
         yield return new WaitForSeconds(10);
-        
+        //playerStats.MovementSpeed = 5f;
+
         Debug.Log("revert");
         //https://www.youtube.com/watch?v=_cYteEhbz-s
     }

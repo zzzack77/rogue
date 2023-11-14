@@ -6,6 +6,7 @@ using UnityEngine;
 public class Tin : MonoBehaviour
 {
     public PlayerMov myplayer;
+    
 
     //[SerializeField] private GameObject _artTooDisable = null;
 
@@ -18,6 +19,9 @@ public class Tin : MonoBehaviour
     void Start()
     {
         Debug.Log("hello");
+        //playerStats.movementSpeed = 10f;
+        
+
     }
 
     // Update is called once per frame
@@ -43,6 +47,7 @@ public class Tin : MonoBehaviour
     {
         m_collider.enabled = false;
         Debug.Log("touch");
+        
         //_artTooDisable.SetActive(false);
         yield return new WaitForSeconds(2);
         Debug.Log("hello");

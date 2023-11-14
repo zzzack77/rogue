@@ -5,23 +5,13 @@ using UnityEngine;
 
 public class PlayerStats
 {
-    private float movementSpeed = 5f;
-    [SerializeField] private float driftSpeed = 10f;
-    [SerializeField] private int health = 100;
-    [SerializeField] private int tinAmount = 0;
-    [SerializeField] private int boostAmount = 0;
-    [SerializeField] private int level = 0;
-    
+    public float movementSpeed {  get; set; }
 
-    public float MovementSpeed
+    public void changeMovSpeed(float mov)
     {
-        get {
-            return movementSpeed; }
-        set {
-            movementSpeed = value; }
+        movementSpeed = mov;
+        Debug.Log("movement speed was changed");
     }
-    
-    
 }
 
 
@@ -29,18 +19,8 @@ public class PlayerStats
 public class PlayerMov : MonoBehaviour
 
 {
-    void powerup()
-    {
-        //change speed
-        PlayerStats stats = new PlayerStats();
-        stats.MovementSpeed = 10f;
-
-    }
-    void unpowerup()
-    {
-        PlayerStats stats = new PlayerStats();
-        stats.MovementSpeed = 5f;
-    }
+    public PlayerStats playerStats;
+    [SerializeField] float movspeedp = 5f;
 
     private Rigidbody2D rb;
 
@@ -50,6 +30,8 @@ public class PlayerMov : MonoBehaviour
     {   
         
         rb = GetComponent<Rigidbody2D>();
+
+        playerStats.movementSpeed = 5f;
         
     }
 
@@ -64,8 +46,9 @@ public class PlayerMov : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerStats stats = new PlayerStats();
-        float mSpeed = stats.MovementSpeed;
-        Debug.Log(stats.MovementSpeed);
-        rb.velocity = movementDirection * mSpeed;
+
+        //float mSpeed = stats.MovementSpeed;
+        Debug.Log(stats.movementSpeed);
+        rb.velocity = movementDirection * stats.movementSpeed;
     }
 }
