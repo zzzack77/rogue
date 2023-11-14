@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Tin : MonoBehaviour
+public class SpeedPower : MonoBehaviour
 {
     public PlayerMov myplayer;
 
@@ -17,13 +17,13 @@ public class Tin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("hello");
+        Debug.Log("speed up");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -35,17 +35,21 @@ public class Tin : MonoBehaviour
             other.gameObject.GetComponent<PlayerMov>();
             StartCoroutine(PowerupSequence(playerMov));
         }
-        
-        
-        
+
+
+
     }
     public IEnumerator PowerupSequence(PlayerMov playerMov)
     {
+        PlayerStats stats = new PlayerStats();
+        stats.MovementSpeed = 10f;
+        
         m_collider.enabled = false;
         Debug.Log("touch");
         //_artTooDisable.SetActive(false);
-        yield return new WaitForSeconds(2);
-        Debug.Log("hello");
+        yield return new WaitForSeconds(10);
+        
+        Debug.Log("revert");
         //https://www.youtube.com/watch?v=_cYteEhbz-s
     }
 }

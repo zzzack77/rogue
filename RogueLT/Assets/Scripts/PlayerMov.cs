@@ -58,12 +58,14 @@ public class PlayerMov : MonoBehaviour
     void Update()
     {
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
     }
 
     private void FixedUpdate()
     {
         PlayerStats stats = new PlayerStats();
         float mSpeed = stats.MovementSpeed;
+        Debug.Log(stats.MovementSpeed);
         rb.velocity = movementDirection * mSpeed;
     }
 }
