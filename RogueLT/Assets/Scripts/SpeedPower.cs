@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -51,13 +50,12 @@ public class SpeedPower : MonoBehaviour
         
 
         m_collider.enabled = false;
-        
         Debug.Log("touch");
         playerMov.playerStats.movementSpeed = 10f;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         playerMov.playerStats.movementSpeed = 5f;
-        
 
+        SpriteRenderer.Destroy(gameObject);
         Debug.Log("revert");
         //https://www.youtube.com/watch?v=_cYteEhbz-s
     }
