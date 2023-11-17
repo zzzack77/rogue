@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -19,6 +20,8 @@ public class SpeedPower : MonoBehaviour
     void Start()
     {
         Debug.Log("speed up");
+
+        
         
     }
 
@@ -33,9 +36,9 @@ public class SpeedPower : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("trigger activate");
-            PlayerMov playerMov =
-            other.gameObject.GetComponent<PlayerMov>();
+            PlayerMov playerMov = other.gameObject.GetComponent<PlayerMov>();
             StartCoroutine(PowerupSequence(playerMov));
+            
         }
 
 
@@ -43,15 +46,17 @@ public class SpeedPower : MonoBehaviour
     }
     public IEnumerator PowerupSequence(PlayerMov playerMov)
     {
+
+
         
 
-        //playerStats.MovementSpeed = 10f;
-        
         m_collider.enabled = false;
+        
         Debug.Log("touch");
-        //_artTooDisable.SetActive(false);
-        yield return new WaitForSeconds(10);
-        //playerStats.MovementSpeed = 5f;
+        playerMov.playerStats.movementSpeed = 10f;
+        yield return new WaitForSeconds(3);
+        playerMov.playerStats.movementSpeed = 5f;
+        
 
         Debug.Log("revert");
         //https://www.youtube.com/watch?v=_cYteEhbz-s

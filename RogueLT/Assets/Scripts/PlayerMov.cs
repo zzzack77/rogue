@@ -6,12 +6,12 @@ using UnityEngine;
 public class PlayerStats
 {
     public float movementSpeed {  get; set; }
+    private int health;
+    private int driftSpeed;
 
-    public void changeMovSpeed(float mov)
-    {
-        movementSpeed = mov;
-        Debug.Log("movement speed was changed");
-    }
+    
+
+
 }
 
 
@@ -20,14 +20,17 @@ public class PlayerMov : MonoBehaviour
 
 {
     public PlayerStats playerStats;
-    [SerializeField] float movspeedp = 5f;
+    
 
     private Rigidbody2D rb;
 
     private Vector2 movementDirection;
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        playerStats = new PlayerStats();
+
+       
         
         rb = GetComponent<Rigidbody2D>();
 
@@ -45,10 +48,9 @@ public class PlayerMov : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PlayerStats stats = new PlayerStats();
 
         //float mSpeed = stats.MovementSpeed;
-        Debug.Log(stats.movementSpeed);
-        rb.velocity = movementDirection * stats.movementSpeed;
+        Debug.Log(playerStats.movementSpeed);
+        rb.velocity = movementDirection * playerStats.movementSpeed;
     }
 }
