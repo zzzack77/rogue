@@ -39,24 +39,24 @@ public class SpeedPower : MonoBehaviour
             StartCoroutine(PowerupSequence(playerMov));
             
         }
+        
 
 
 
     }
     public IEnumerator PowerupSequence(PlayerMov playerMov)
     {
+        //increases speed, then after 10 seconds speed is reduced back to original 
 
-
-        
-
+        gameObject.transform.localScale = new Vector3(0, 0, 0);
         m_collider.enabled = false;
-        Debug.Log("touch");
         playerMov.playerStats.movementSpeed = 10f;
-        yield return new WaitForSeconds(10);
-        playerMov.playerStats.movementSpeed = 5f;
 
-        SpriteRenderer.Destroy(gameObject);
-        Debug.Log("revert");
+        yield return new WaitForSeconds(10);
+
+        playerMov.playerStats.movementSpeed = 5f;
+        Destroy(gameObject);
+        
         //https://www.youtube.com/watch?v=_cYteEhbz-s
     }
 }

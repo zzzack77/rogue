@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PlayerStats
 {
-    public float movementSpeed {  get; set; }
+    public float movementSpeed { get; set; }
+    public float tinAmount { get; set; }
     private int health;
     private int driftSpeed;
 
+    //public int Health = { get => health; }
     
 
 
@@ -50,7 +52,7 @@ public class PlayerMov : MonoBehaviour
     {
 
         //float mSpeed = stats.MovementSpeed;
-        Debug.Log(playerStats.movementSpeed);
+        Debug.Log(playerStats.tinAmount);
         rb.velocity = movementDirection * playerStats.movementSpeed;
     }
 }

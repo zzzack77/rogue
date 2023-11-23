@@ -18,10 +18,7 @@ public class Tin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("hello");
-        //playerStats.movementSpeed = 10f;
         
-
     }
 
     // Update is called once per frame
@@ -34,23 +31,10 @@ public class Tin : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("trigger activate");
-            PlayerMov playerMov =
-            other.gameObject.GetComponent<PlayerMov>();
-            StartCoroutine(PowerupSequence(playerMov));
+            //Adds one to the tin amount which will be displayed eventually
+            PlayerMov playerMov = other.gameObject.GetComponent<PlayerMov>();
+            playerMov.playerStats.tinAmount++;
+            Destroy(gameObject);
         }
-        
-        
-        
-    }
-    public IEnumerator PowerupSequence(PlayerMov playerMov)
-    {
-        m_collider.enabled = false;
-        Debug.Log("touch");
-        
-        //_artTooDisable.SetActive(false);
-        yield return new WaitForSeconds(2);
-        Debug.Log("hello");
-        //https://www.youtube.com/watch?v=_cYteEhbz-s
     }
 }
