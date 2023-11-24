@@ -24,7 +24,7 @@ public class PlayerMov : MonoBehaviour
     public PlayerStats playerStats;
     
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
     private Vector2 movementDirection;
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class PlayerMov : MonoBehaviour
 
        
         
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
 
         playerStats.movementSpeed = 5f;
         
@@ -44,7 +44,7 @@ public class PlayerMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movementDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
     }
 
